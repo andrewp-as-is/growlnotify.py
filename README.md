@@ -9,10 +9,10 @@ $ [sudo] pip install growlnotify
 ```
 
 #### Functions
-function|description
+function|`__doc__`
 -|-
-`growlnot.args(**kwargs)`|return list with `growlnotify` cli arguments
-`growlnot.notify(**kwargs)`|run growlnotify
+`growlnotify.args(**kwargs)`|return list with `growlnotify` cli arguments
+`growlnotify.notify(**kwargs)`|run growlnotify
 
 #### Examples
 ```python

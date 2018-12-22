@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 import public
-import runcmd
+import subprocess
+import time
 
 
 @public.add
@@ -26,4 +28,7 @@ def notify(**kwargs):
     if "m" not in kwargs and "message" not in kwargs:
         kwargs["m"] = ""
     cmd = ["growlnotify"] + args(**kwargs)
-    runcmd.run(cmd)._raise()
+    if "/Contents/MacOS/Growl" not in os.popen("ps -ax").read():
+        subprocess.check_call(["open", "-a", "Growl"])
+        time.sleep(0.5)
+    subprocess.check_call(cmd)
