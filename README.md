@@ -1,9 +1,13 @@
+<!--
+https://pypi.org/project/readme-generator/
+-->
+
 [![](https://img.shields.io/badge/OS-MacOS-blue.svg?longCache=True)]()
-[![](https://img.shields.io/pypi/pyversions/growlnotify.svg?longCache=True)](https://pypi.org/pypi/growlnotify/)
-[![](https://img.shields.io/pypi/v/growlnotify.svg?maxAge=3600)](https://pypi.org/pypi/growlnotify/)
+[![](https://img.shields.io/pypi/pyversions/growlnotify.svg?longCache=True)](https://pypi.org/project/growlnotify/)
+[![](https://img.shields.io/pypi/v/growlnotify.svg?maxAge=3600)](https://pypi.org/project/growlnotify/)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/growlnotify.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/growlnotify.py/)
 
-#### Install
+#### Installation
 ```bash
 $ [sudo] pip install growlnotify
 ```
@@ -11,8 +15,8 @@ $ [sudo] pip install growlnotify
 #### Functions
 function|`__doc__`
 -|-
-`growlnotify.args(**kwargs)`|return list with `growlnotify` cli arguments
-`growlnotify.notify(**kwargs)`|run growlnotify
+`growlnotify.args(**kwargs)` |return a list with `growlnotify` cli arguments
+`growlnotify.notify(**kwargs)` |run growlnotify
 
 #### Examples
 ```python
@@ -35,4 +39,6 @@ $ growlnotify --help
 #### Links
 +   [growl.info](http://growl.info/)
 
-<p align="center"><a href="https://pypi.org/project/readme-md/">readme-md</a> - README.md generator</p>
+<p align="center">
+    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+</p>

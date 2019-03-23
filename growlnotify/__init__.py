@@ -8,14 +8,15 @@ import time
 
 @public.add
 def args(**kwargs):
-    """return list with `growlnotify` cli arguments"""
+    """return a list with `growlnotify` cli arguments"""
     args = []
     for k, v in kwargs.items():
         short = len(k) == 1
         string = "-%s" % k if short else "--%s" % k
-        if v is True:
+        if isinstance(v, bool):
             """flag, e.g.: -s, --sticky"""
-            args += [string]
+            if v:
+                args += [string]
         else:
             """ -t "title text", --title "title text """
             args += [string, str(v)]
@@ -28,7 +29,7 @@ def notify(**kwargs):
     if "m" not in kwargs and "message" not in kwargs:
         kwargs["m"] = ""
     cmd = ["growlnotify"] + args(**kwargs)
-    if "/Contents/MacOS/Growl" not in os.popen("ps -ax").read():
+    out = os.popen("osascript -e 'tell application \"System Events\" to (name of processes) contains \"Growl\"'").read()
+    if "false" in out:
         subprocess.check_call(["open", "-a", "Growl"])
-        time.sleep(0.5)
     subprocess.check_call(cmd)
