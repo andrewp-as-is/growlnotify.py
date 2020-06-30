@@ -1,11 +1,10 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+__all__ = ['args', 'notify']
+
+
 import os
-import public
 import subprocess
 
 
-@public.add
 def args(**kwargs):
     """return a list with `growlnotify` cli arguments"""
     args = []
@@ -22,13 +21,13 @@ def args(**kwargs):
     return args
 
 
-@public.add
 def notify(**kwargs):
     """run growlnotify"""
     if "m" not in kwargs and "message" not in kwargs:
         kwargs["m"] = ""
     cmd = ["growlnotify"] + args(**kwargs)
-    out = os.popen("osascript -e 'tell application \"System Events\" to (name of processes) contains \"Growl\"'").read()
+    out = os.popen(
+        "osascript -e 'tell application \"System Events\" to (name of processes) contains \"Growl\"'").read()
     if "false" in out:
         subprocess.check_call(["open", "-a", "Growl"])
     subprocess.check_call(cmd)
